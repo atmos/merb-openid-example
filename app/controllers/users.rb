@@ -1,5 +1,6 @@
 class Users < Application
   # provides :xml, :yaml, :js
+  skip_before :ensure_authenticated
 
   def index
     @users = User.all
@@ -30,6 +31,7 @@ class Users < Application
     if @user.save
       redirect resource(@user), :message => {:notice => "User was successfully created"}
     else
+      pp @user.errors
       message[:error] = "User failed to be created"
       render :new
     end
@@ -38,7 +40,8 @@ class Users < Application
   def update(id, user)
     @user = User.get(id)
     raise NotFound unless @user
-    if @user.update_attributes(user)
+    @user.update_attributes(user)
+    if @user.errors.empty?
        redirect resource(@user)
     else
       display @user, :edit

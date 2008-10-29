@@ -37,7 +37,6 @@ Merb::Router.prepare do
   
   match("/openid").to(:controller => :application, :action => :openid).name(:openid)
   match("/signup").to(:controller => :authentication, :action => :signup).name(:signup)
-  match("/login").to(:controller => :authentication, :action => :signup).name(:login)
 
   # This is the default route for /:controller/:action/:id
   # This is fine for most cases.  If you're heavily using resource-based
