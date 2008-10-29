@@ -3,11 +3,37 @@
   <head>
     <title>Fresh Merb App</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <link rel="openid.server" href="http://pip.verisignlabs.com/server" />
     <link rel="stylesheet" href="/stylesheets/master.css" type="text/css" media="screen" charset="utf-8" />
   </head>
   <body>
-    <%#= message[:notice] %>
-    <%= catch_content :for_layout %>
+    <div id="main"><h1>Merb+OpenID</h1><h2>By Corey Donohoe</h2></div>
+
+    <div id="linkbar">
+      <div id="navcontainer">
+        <ul id="navlist">
+          <li id="active"><a href="#" id="current">Sign In</a></li>
+          <li><a href="#">WTF</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="top_content">
+
+    <blockquote><p>If you hear a voice within you say &quot;you cannot paint,&quot; then by all means paint, and that voice will be silenced.<br />
+      Vincent Van Gogh</p></blockquote>
+
+    </div>
+
+    <div id="main_content">
+
+      <h3>Please Choose an OpenID Provider</h3>
+      <p>
+        <%#= message[:notice] %>
+        <%= catch_content :for_layout %>
+      </p>
+    </div>
+    <div id="footer">
+      &copy; <a href="http://www.csstemplateheaven.com">www.csstemplateheaven.com</a>. Design by Dieter Schneider 2006
+    </div>
   </body>
 </html>
