@@ -1,10 +1,14 @@
 About
 -----
+This is an openid consumer application with auto-signup via merb-auth's built in openid support.
 
-I needed an openid client and figured I'd use the stuff in merb-auth.  The published gems with 0.9.10 do not work.  
-I upgraded to the gems in github(future 1.0rc3 I think) and this app works just fine as a consumer.  Please
-fork and keep up to date, specs to come.
+Community
+---------
+Please fork and keep up to date.  
 
+Requirements
+------------
+% sudo gem install merb -v=0.9.11
 
 Design
 ------
