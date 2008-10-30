@@ -28,7 +28,6 @@ describe Authentication do
       # }
     end
     it "should return unauthenticated" do
-      pp @response.body
       @response.status.should == 401
     end
   end
