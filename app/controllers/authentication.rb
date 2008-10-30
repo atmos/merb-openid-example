@@ -1,5 +1,5 @@
 class Authentication < Merb::Controller
-  before :ensure_authenticated, :exclude => [:signup]
+  before :ensure_authenticated, :exclude => :signup
   
   def index
     redirect '/'

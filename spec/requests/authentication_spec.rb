@@ -40,7 +40,7 @@ describe Authentication do
       it "should return http redirect" do
         @response.status.should == 302
       end
-      it "should redirect to the root user" do
+      it "should redirect to the login screen" do
         @response.body.to_s.should match(%r!href="/login"!)
       end
     end
@@ -56,7 +56,7 @@ describe Authentication do
       it "should return http redirect" do
         @response.status.should == 302
       end
-      it "should redirect to the root user" do
+      it "should redirect to the user listing" do
         @response.body.should have_xpath("//a[@href='/users']")
       end
     end
@@ -73,7 +73,7 @@ describe Authentication do
       it "should return http redirect" do
         @response.status.should == 302
       end
-      it "should redirect to the root user" do
+      it "should redirect to the login page" do
         @response.body.should have_xpath("//a[@href='/login']")
       end
       it "should give the user a message about validation errors"
