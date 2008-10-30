@@ -6,6 +6,8 @@ class User
   property :email, String, :nullable => false
   property :identity_url, String, :nullable => false
 
-  validates_is_unique :identity_url, :scope => [:name,:email]
+  validates_is_unique :identity_url
+  validates_is_unique :name
+  validates_is_unique :email
   def password_required?; false end
 end

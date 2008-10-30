@@ -6,6 +6,6 @@ class Authentication < Merb::Controller
                                 {:email => session['openid.email'], :name => session['openid.nickname']})
 
     session.user.save
-    redirect(url(:users))
+    session.user.valid? ? redirect(url(:users)) : redirect(url(:login))
   end
 end
