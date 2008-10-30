@@ -13,3 +13,8 @@ Requirements
 Design
 ------
 Design by Dieter Schneider via oswd.org
+
+FAIL
+----
+There are two failing specs in this example that no one can explain to me atm.  :exclude/:only
+seem to have problems even with rc3.
