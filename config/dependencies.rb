@@ -1,5 +1,5 @@
 # dependencies are generated using a strict version, don't forget to edit the dependency versions when upgrading.
-merb_gems_version = "0.9.10"
+merb_gems_version = "0.9.11"
 dm_gems_version   = "0.9.6"
 
 # For more information about each component, please read http://wiki.merbivore.com/faqs/merb_components
@@ -9,10 +9,10 @@ dependency "merb-cache", merb_gems_version
 dependency "merb-helpers", merb_gems_version 
 dependency "merb-mailer", merb_gems_version  
 dependency "merb-slices", merb_gems_version  
-dependency "merb-auth", '0.9.9'
+dependency "merb-auth", merb_gems_version  
 dependency "merb-auth-core", merb_gems_version
 dependency "merb-auth-more", merb_gems_version
-# dependency "merb-auth-slice-password", merb_gems_version
+dependency "merb-auth-slice-password", merb_gems_version
 dependency "merb-param-protection", merb_gems_version
 dependency "merb-exceptions", merb_gems_version
  
