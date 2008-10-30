@@ -5,5 +5,6 @@ class Application < Merb::Controller
 
   def session_dump
     pp session
+    pp session.user
   end
 end

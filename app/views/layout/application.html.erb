@@ -11,25 +11,23 @@
     <div id="linkbar">
       <div id="navcontainer">
         <ul id="navlist">
-          <% unless session[:user] %>
-            <li id="active"><a href="/login" id="current">Sign In</a></li>
-          <% end %>
           <li><a href="#">WTF</a></li>
-          <li><a href="/logout">Logout</a></li>
+          <% if session.user %>
+            <li id="active"><a href="/logout" id="current">Logout</a></li>
+          <% end %>
         </ul>
       </div>
     </div>
 
     <div id="top_content">
-
-    <blockquote><p>If you hear a voice within you say &quot;you cannot paint,&quot; then by all means paint, and that voice will be silenced.<br />
-      Vincent Van Gogh</p></blockquote>
+    
+    <!-- <blockquote><p>If you hear a voice within you say &quot;you cannot paint,&quot; then by all means paint, and that voice will be silenced.<br />
+      Vincent Van Gogh</p></blockquote> -->
 
     </div>
 
     <div id="main_content">
 
-      <h3>Please Choose an OpenID Provider</h3>
       <p>
         <%#= message[:notice] %>
         <%= catch_content :for_layout %>
