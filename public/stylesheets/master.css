@@ -37,6 +37,48 @@ body {
 	padding-right: 260px;
 	font-size: 12px;
 }
+#main_content h3 {
+  font-size: 1.4em;
+  padding-left: 40px;
+  margin-top: -120px;
+}
+#main_content input {
+  margin-left: 30px;
+}
+
+input.submit {
+  border: 3px double #999999;
+  border-top-color: #CCCCCC;
+  border-left-color: #CCCCCC;
+  padding: 0.25em;
+  background-color: #FFFFFF;
+  background-repeat: repeat-x;
+  color: #333333;
+  font-size: 75%;
+  font-weight: bold;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+}
+
+#where_am_i {
+  margin-top: -30px;
+	background-image: url(/images/body_tile.jpg);
+	width: 356px;
+	background-repeat: repeat-y;
+	padding-left: 125px;
+	padding-right: 260px;
+	font-size: 12px;
+}
+
+#where_am_i h3 {
+  font-size: 1.4em;
+  padding-left: 50px;
+  margin-top: -110px;
+}
+
+#where_am_i p {
+  font-size: 1.2em;
+  margin-left: 5px;
+}
 
 #footer {
 	background-image: url(/images/footer.jpg);
