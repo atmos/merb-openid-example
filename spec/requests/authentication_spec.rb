@@ -7,7 +7,31 @@ describe Authentication do
                      :identity_url => 'http://foo.myopenid.com' }
     User.create(@user_params)
   end
-  
+
+  describe "#index" do
+    before(:each) do
+      @response = request(url(:openid), :method => 'GET')
+      # params = { 
+      #   "openid.sreg.nickname"=>"atmos", "openid.claimed_id"=>"http://atmos.aol.com/", 
+      #   "openid.mode"=>"id_res", "openid.ns.sreg"=>"http://openid.net/extensions/sreg/1.1", 
+      #   "openid.return_to"=>"http://localhost:4000/openid", 
+      #   "openid.sig"=>"QMAWNSbl(*^hj8jBnohvBNpmlun8=", 
+      #   "openid.ns"=>"http://specs.openid.net/auth/2.0", 
+      #   "openid.op_endpoint"=>"http://www.myopenid.com/server", 
+      #   "action"=>:index, 
+      #   "openid.response_nonce"=>"2008-10-30T02:22:12ZYF4XhB", 
+      #   "controller"=>"open_i_d_auth", 
+      #   "openid.sreg.email"=>"atmos@atmos.org", 
+      #   "openid.identity"=>"http://atmos.myopenid.com/", 
+      #   "openid.assoc_handle"=>"{HMAC-SHA1}{490a92nf5}{f/9pww==}", 
+      #   "openid.signed"=>"assoc_handle,claimed_id,identity,mode,ns,ns.sreg,op_endpoint,response_nonce,return_to,signed,sreg.email,sreg.nickname"
+      # }
+    end
+    it "should return unauthenticated" do
+      pp @response.body
+      @response.status.should == 401
+    end
+  end
   describe "#signup" do
     describe "a user with no session data" do
       before(:each) do

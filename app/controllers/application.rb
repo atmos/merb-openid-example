@@ -8,9 +8,3 @@ class Application < Merb::Controller
   #   pp session.user
   # end
 end
-
-class OpenIDAuth < Application
-  def index
-    redirect '/'
-  end
-end
