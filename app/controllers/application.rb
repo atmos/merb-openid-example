@@ -1,6 +1,8 @@
+require 'pp'
 class Application < Merb::Controller
   before :ensure_authenticated
-  def openid
-    ""
+  before :session_dump
+  def session_dump
+    pp session
   end
 end

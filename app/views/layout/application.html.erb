@@ -11,8 +11,11 @@
     <div id="linkbar">
       <div id="navcontainer">
         <ul id="navlist">
-          <li id="active"><a href="#" id="current">Sign In</a></li>
+          <% unless session[:user] %>
+            <li id="active"><a href="/login" id="current">Sign In</a></li>
+          <% end %>
           <li><a href="#">WTF</a></li>
+          <li><a href="/logout">Logout</a></li>
         </ul>
       </div>
     </div>
