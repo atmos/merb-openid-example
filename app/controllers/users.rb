@@ -1,6 +1,5 @@
 class Users < Application
   # provides :xml, :yaml, :js
-  # before :ensure_authenticated, :only => [:signup]
 
   def index
     @users = User.all

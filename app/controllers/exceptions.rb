@@ -10,7 +10,7 @@ class Exceptions < Merb::Controller
     render :format => :html
   end
 
-  def unauthenticated
-    redirect(url(:signin))
-  end
+  # def unauthenticated
+  #   render
+  # end
 end

@@ -1,15 +1,5 @@
 class Authentication < Merb::Controller
-  def signin
-    render
-  end
-  
-  def signout
-    session.clear
-    redirect(url(:signup))
-  end
-  
   def signup
-    Merb.logger.info! session.inspect
     
     redirect!(url(:signin)) if session['openid.url'].nil?
     
@@ -18,6 +8,7 @@ class Authentication < Merb::Controller
                                 {:email => session['openid.email'], :name => session['openid.nickname'],
                                   :password => pass, :password_confirmation => pass})
     @user.save
+    Merb.logger.info @user.errors.inspect
     redirect(url(:users))
   end
 end

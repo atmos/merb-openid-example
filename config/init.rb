@@ -20,7 +20,6 @@ Merb::BootLoader.before_app_loads do
 end
 
 Merb::BootLoader.after_app_loads do
-  Merb::Authentication.activate!(:default_openid)
   DataMapper.auto_migrate!
   # This will get executed after your app's classes have been loaded.
 end
