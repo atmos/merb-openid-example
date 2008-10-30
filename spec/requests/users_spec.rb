@@ -9,78 +9,85 @@ describe Users do
     User.create(@user_params)
   end
 
-  
   describe "resource(:users)" do
     describe "GET" do
-
+  
       before(:each) do
-        @response = request(resource(:users))
+        @response = dispatch_to(Users, :index) do |controller|
+          stub(controller.session).user { User.first }
+        end
       end
-
+  
       it "responds successfully" do
         @response.should be_successful
       end
-
+  
       it "contains a list of users" do
         pending
         @response.should have_xpath("//ul")
       end
-
+  
     end
-
+  
     describe "GET" do
       before(:each) do
         @response = request(resource(:users))
       end
-
+  
       it "has a list of users" do
         pending
         @response.should have_xpath("//ul/li")
       end
     end
-
+  
     describe "a successful POST" do
       before(:each) do
         User.all.destroy!
-        @response = request(resource(:users), :method => "POST", 
-          :params => { :user => @user_params })
+        @response = dispatch_to(Users, :create, { :user => @user_params }) do |controller|
+          mock(controller).ensure_authenticated { true }
+        end
       end
-
+  
       it "redirects to resource(:users)" do
         @response.should redirect_to(resource(User.first), :message => {:notice => "user was successfully created"})
       end
-
+  
     end
   end
 
   describe "resource(@user)" do 
     describe "a successful DELETE" do
        before(:each) do
-         @response = request(resource(User.first), :method => "DELETE")
+         @response = dispatch_to(Users, :destroy, {:id => User.first.id}) do |controller|
+           mock(controller).ensure_authenticated { true }
+         end
        end
-
+  
        it "should redirect to the index action" do
          @response.should redirect_to(resource(:users))
        end
-
      end
   end
-
+  
   describe "resource(:users, :new)" do
     before(:each) do
-      @response = request(resource(:users, :new))
+      @response = dispatch_to(Users, :new, {}) do |controller|
+        mock(controller).ensure_authenticated { true }
+      end
     end
-
+  
     it "responds successfully" do
       @response.should be_successful
     end
   end
-
+  
   describe "resource(@user, :edit)" do
     before(:each) do
-      @response = request(resource(User.first, :edit))
+      @response = dispatch_to(Users, :edit, {:id => User.first.id}) do |controller|
+        mock(controller).ensure_authenticated { true }
+      end
     end
-
+  
     it "responds successfully" do
       @response.should be_successful
     end
@@ -90,7 +97,9 @@ describe Users do
 
     describe "GET" do
       before(:each) do
-        @response = request(resource(User.first))
+        @response = dispatch_to(Users, :show, {:id => User.first.id}) do |controller|
+          mock(controller).ensure_authenticated { true }
+        end
       end
 
       it "responds successfully" do
@@ -100,8 +109,9 @@ describe Users do
 
     describe "PUT" do
       before(:each) do
-        @response = request(resource(User.first), :method => "PUT", 
-          :params => { :user => {:id => User.first.id } })
+        @response = dispatch_to(Users, :update, {:id => User.first.id, :user => {:id => User.first.id }}) do |controller|
+          mock(controller).ensure_authenticated { true }
+        end
       end
 
       it "redirect to the article show action" do

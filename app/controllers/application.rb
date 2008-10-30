@@ -1,10 +1,16 @@
 require 'pp'
 class Application < Merb::Controller
-  before :session_dump
+  # before :session_dump
   before :ensure_authenticated
 
-  def session_dump
-    pp session
-    pp session.user
+  # def session_dump
+  #   pp session
+  #   pp session.user
+  # end
+end
+
+class OpenIDAuth < Application
+  def index
+    redirect '/'
   end
 end

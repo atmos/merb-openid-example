@@ -30,7 +30,6 @@ class Users < Application
     if @user.save
       redirect resource(@user), :message => {:notice => "User was successfully created"}
     else
-      pp @user.errors
       message[:error] = "User failed to be created"
       render :new
     end
