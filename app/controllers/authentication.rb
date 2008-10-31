@@ -1,10 +1,4 @@
 class Authentication < Merb::Controller
-  before :ensure_authenticated, :exclude => [:signup]
-  
-  def index
-    redirect '/'
-  end
-  
   def signup
     return redirect(url(:login)) if session['openid.url'].nil?
     
