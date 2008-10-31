@@ -8,7 +8,7 @@ Please fork and keep up to date.
 
 Requirements
 ------------
-% sudo gem install merb
+% script/update
 
 Design
 ------
@@ -17,11 +17,9 @@ Design by Dieter Schneider via oswd.org
 FAIL
 ----
 There are two failing specs in this example that no one can explain to me atm.  :exclude/:only
-seem to have problems even with rc3.  If you really need this to work break the authentication
+seem to have problems even with rc4.  If you really need this to work; break the authentication
 actions out into separate controllers, only add the before filters to the one w/ the openid 
 action.
-
-:\
 
 __
 atmos
