@@ -8,7 +8,7 @@ Please fork and keep up to date.
 
 Requirements
 ------------
-% sudo gem install merb -v=0.9.11
+% sudo gem install merb
 
 Design
 ------
