@@ -1,6 +1,7 @@
 .DS_Store
 log/*
 tmp/*
+gems/*
 TAGS
 *~
 .#*
@@ -16,3 +17,4 @@ src/*
 .hgignore
 .hg/*
 .svn/*
+.gemrc

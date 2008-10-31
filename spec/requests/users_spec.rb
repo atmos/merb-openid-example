@@ -48,7 +48,7 @@ describe Users do
       end
   
       it "redirects to resource(:users)" do
-        @response.should redirect_to(resource(User.first), :message => {:notice => "user was successfully created"})
+        @response.should redirect_to(url(:user, User.first.id), :message => {:notice => "user was successfully created"})
       end
   
     end
@@ -114,9 +114,8 @@ describe Users do
       end
 
       it "redirect to the article show action" do
-        @response.should redirect_to(resource(User.first))
+        @response.should redirect_to(url(:user, User.first.id), :message => {:notice => "User was successfully updated"})
       end
     end
-
   end
 end

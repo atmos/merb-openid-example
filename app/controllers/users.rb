@@ -28,7 +28,7 @@ class Users < Application
   def create(user)
     @user = User.new(user)
     if @user.save
-      redirect resource(@user), :message => {:notice => "User was successfully created"}
+      redirect url(:user, @user.id), :message => {:notice => "User was successfully created"}
     else
       message[:error] = "User failed to be created"
       render :new
@@ -40,7 +40,7 @@ class Users < Application
     raise NotFound unless @user
     @user.update_attributes(user)
     if @user.errors.empty?
-       redirect resource(@user)
+       redirect url(:user, @user.id), :message => {:notice => "User was successfully updated"}
     else
       display @user, :edit
     end
