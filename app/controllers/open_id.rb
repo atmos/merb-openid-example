@@ -1,4 +1,4 @@
-class Authentication < Merb::Controller
+class OpenId < Merb::Controller
   before :ensure_authenticated, :only => [:login]
   before :ensure_openid_url,    :only => [:register]
   

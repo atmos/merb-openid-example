@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe Authentication do
+describe OpenId do
   before(:each) do
     User.all.destroy!
     @user_params = { :name => 'atmos', :email => 'joe@atmoose.org', 
@@ -39,7 +39,7 @@ describe Authentication do
 
     describe "a session with a valid user" do
       before(:each) do
-        @response = @response = dispatch_to(Authentication, :login) do |controller|
+        @response = @response = dispatch_to(OpenId, :login) do |controller|
           stub(controller.session).[](:user) { User.first.id }
         end
       end
@@ -66,7 +66,7 @@ describe Authentication do
     end
     describe "valid user data returned" do
       before(:each) do
-        @response = dispatch_to(Authentication, :register) do |controller|
+        @response = dispatch_to(OpenId, :register) do |controller|
           stub(controller.session).[](:user) { User.first.id }
           mock(controller.session).[]('openid.url').twice { 'http://ceel0.myopenidizzle.com' }
           mock(controller.session).[]('openid.email') { 'gangsters@ceelo.com' }
@@ -83,7 +83,7 @@ describe Authentication do
 
     describe "invalid user data returned" do
       before(:each) do
-        @response = dispatch_to(Authentication, :register) do |controller|
+        @response = dispatch_to(OpenId, :register) do |controller|
           # mock(controller.session).[](:user).times(3) { User.first.id }
           mock(controller.session).[]('openid.url').twice { 'http://ceel0.myopenidizzle.com' }
           mock(controller.session).[]('openid.email') { 'gangsters@ceelo.com' }
