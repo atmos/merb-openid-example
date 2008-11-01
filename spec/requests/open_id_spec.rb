@@ -41,13 +41,14 @@ describe OpenId do
       before(:each) do
         @response = @response = dispatch_to(OpenId, :login) do |controller|
           stub(controller.session).[](:user) { User.first.id }
+          mock(controller).ensure_authenticated { true }
         end
       end
       it "should return http redirect" do
         @response.status.should == 302
       end
       it "should redirect to the users page" do
-        @response.should have_xpath("//a[@href='/users/#{@response.session.user.id}']")
+        @response.should have_xpath("//a[@href='/users/#{@response.session.user.id}?_message=BAh7BjoLbm90aWNlIhpZb3UgYXJlIG5vdyBsb2dnZWQgaW4%3D%0A']")
       end
     end
     
@@ -77,7 +78,7 @@ describe OpenId do
         @response.status.should == 302
       end
       it "should redirect to the user listing" do
-        @response.body.should have_xpath("//a[@href='/users/#{@response.session.user.id}']")
+        @response.body.should have_xpath("//a[@href='/users/#{@response.session.user.id}?_message=BAh7BjoLbm90aWNlIhpTaWdudXAgd2FzIHN1Y2Nlc3NmdWw%3D%0A']")
       end
     end
 

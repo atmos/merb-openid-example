@@ -4,7 +4,7 @@ class OpenId < Merb::Controller
   
   def login
     # if the user is logged in, then redirect them to their profile
-    redirect resource(session.user), :message => { :notice => 'You are now logged in' }
+    redirect url(:user, session.user.id), :message => { :notice => 'You are now logged in' }
   end
   
   def register
@@ -21,7 +21,7 @@ class OpenId < Merb::Controller
 
     if user.update_attributes(attributes)
       session.user = user
-      redirect resource(session.user), :message => { :success => 'Signup was successful' }
+      redirect url(:user, session.user.id), :message => { :notice => 'Signup was successful' }
     else
       message[:error] = 'There was an error while creating your user account'
       redirect(url(:login))
