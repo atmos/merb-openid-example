@@ -15,11 +15,10 @@
         <ul id="navlist">
         <% unless session.user %>
           <li><span><a href="#main_content">Login</a></span></li>
+        <% else %>
+          <li><span><a href="#main_content">The Business</a></span></li>
         <% end %>
           <li><span><a href="#where_am_i">Where am I?</a></span></li>
-          <% if session.user %>
-            <li><span><a href="/logout" id="current">Logout</a><span></li>
-          <% end %>
         </ul>
       </div>
     </div>
