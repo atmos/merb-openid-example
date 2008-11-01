@@ -97,6 +97,7 @@ describe Users do
     describe "GET" do
       before(:each) do
         @response = dispatch_to(Users, :show, {:id => User.first.id}) do |controller|
+          stub(controller.session).[](:user) { User.first.id }
           mock(controller).ensure_authenticated { true }
         end
       end

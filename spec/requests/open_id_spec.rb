@@ -30,16 +30,16 @@ describe OpenId do
         @response = request(url(:openid), :method => 'GET')
       end
       it "should return http redirect" do
-        @response.status.should == 302
+        @response.status.should == 401
       end
       it "should redirect to the login page" do
-        @response.should have_xpath("//a[@href='/login']")
+        @response.should have_xpath("//form[@action='/openid/login']")
       end
     end
 
     describe "a session with a valid user" do
       before(:each) do
-        @response = @response = dispatch_to(OpenId, :login) do |controller|
+        @response = dispatch_to(Users, :login) do |controller|
           stub(controller.session).[](:user) { User.first.id }
           mock(controller).ensure_authenticated { true }
         end
@@ -51,7 +51,7 @@ describe OpenId do
         @response.should have_xpath("//a[@href='/users/#{@response.session.user.id}?_message=BAh7BjoLbm90aWNlIhpZb3UgYXJlIG5vdyBsb2dnZWQgaW4%3D%0A']")
       end
     end
-    
+
   end
   describe "#register" do
     describe "a user with no session data" do

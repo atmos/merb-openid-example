@@ -1,12 +1,6 @@
 class OpenId < Merb::Controller
-  before :ensure_authenticated, :only => [:login]
-  before :ensure_openid_url,    :only => [:register]
-  
-  def login
-    # if the user is logged in, then redirect them to their profile
-    redirect url(:user, session.user.id), :message => { :notice => 'You are now logged in' }
-  end
-  
+  before :ensure_openid_url
+
   def register
     attributes = {
       :name         => session['openid.nickname'],
@@ -28,7 +22,7 @@ class OpenId < Merb::Controller
     end
   end
   private
- 
+
   def ensure_openid_url
     throw :halt, redirect(url(:login)) if session['openid.url'].nil?
   end
