@@ -1,17 +1,33 @@
 class Authentication < Merb::Controller
-  before :ensure_authenticated, :exclude => [:signup]
+  before :ensure_authenticated, :only => [:login]
+  before :ensure_openid_url,    :only => [:register]
   
-  def index
-    redirect '/'
+  def login
+    redirect(url(:user, session.user.id))
   end
   
-  def signup
-    return redirect(url(:login)) if session['openid.url'].nil?
-    
-    session.user = User.first_or_create({:identity_url => session['openid.url']},
-                                {:email => session['openid.email'], :name => session['openid.nickname']})
+  def register
+    attributes = {
+      :name         => session['openid.nickname'],
+      :email        => session['openid.email'],
+      :identity_url => session['openid.url'],
+    }
 
-    session.user.save
-    session.user.valid? ? redirect(url(:users)) : redirect(url(:login))
+    user = Merb::Authentication.user_class.first_or_create(
+      attributes.only(:identity_url),
+      attributes.only(:name, :email)
+    )
+
+    if user.update_attributes(attributes)
+      session.user = user
+      login
+    else
+      redirect(url(:login))
+    end
+  end
+  private
+ 
+  def ensure_openid_url
+    throw :halt, redirect(url(:login)) if session['openid.url'].nil?
   end
 end

@@ -34,8 +34,8 @@ Merb::Router.prepare do
   # Adds the required routes for merb-auth using the password slice
   slice(:merb_auth_slice_password, :name_prefix => nil, :path_prefix => "")
   
-  match("/openid").to(:controller => :authentication, :action => :index).name(:openid)
-  match("/signup").to(:controller => :authentication, :action => :signup).name(:signup)
+  match("/openid/login").to(:controller => :authentication, :action => :login).name(:openid)
+  match("/openid/register").to(:controller => :authentication, :action => :register).name(:signup)
   
   # This is the default route for /:controller/:action/:id
   # This is fine for most cases.  If you're heavily using resource-based
