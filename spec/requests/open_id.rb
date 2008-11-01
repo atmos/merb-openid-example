@@ -32,7 +32,7 @@ describe OpenId do
       it "should return http redirect" do
         @response.status.should == 302
       end
-      it "should redirect somewhere" do
+      it "should redirect to the login page" do
         @response.should have_xpath("//a[@href='/login']")
       end
     end
@@ -46,7 +46,7 @@ describe OpenId do
       it "should return http redirect" do
         @response.status.should == 302
       end
-      it "should redirect somewhere" do
+      it "should redirect to the users page" do
         @response.should have_xpath("//a[@href='/users/#{@response.session.user.id}']")
       end
     end

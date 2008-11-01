@@ -8,10 +8,10 @@ use_template_engine :erb
  
 Merb::Config.use do |c|
   c[:use_mutex] = false
-  c[:session_store] = 'cookie'  # can also be 'memory', 'memcache', 'container', 'datamapper
+  c[:session_store] = 'datamapper'  # can also be 'memory', 'memcache', 'container', 'datamapper
 
   # cookie session store configuration
-  c[:session_secret_key]  = '31ce315bcf759bca292bd7a0892b861e5a2c2225'  # required for cookie session store
+  # c[:session_secret_key]  = '31ce315bcf759bca292bd7a0892b861e5a2c2225'  # required for cookie session store
   # c[:session_id_key] = '_session_id' # cookie session id key, defaults to "_session_id"
 end
 
