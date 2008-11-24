@@ -32,7 +32,7 @@ Merb::Router.prepare do
   # resources :posts
   
   # Adds the required routes for merb-auth using the password slice
-  slice(:merb_auth_slice_password, :name_prefix => nil, :path_prefix => "")
+  add_slice(:merb_auth_slice_password)
   
   match("/openid/login"   ).to(:controller => :users,   :action => :login   ).name(:openid)
   match("/openid/register").to(:controller => :open_id, :action => :register).name(:signup)
