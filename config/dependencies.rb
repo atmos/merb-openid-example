@@ -1,27 +1,34 @@
-add_source "http://gems.rubyforge.org/"
+# dependencies are generated using a strict version, don't forget to edit the dependency versions when upgrading.
+merb_gems_version = "1.0.6"
+dm_gems_version   = "0.9.8"
 
-add_gem 'rspec', '=1.1.11'
-add_gem 'rake'
-add_gem 'rcov'
-add_gem 'mongrel'
-add_gem 'hoe'
-add_gem 'data_objects'
-add_gem 'do_sqlite3'
-add_gem 'ruby-openid', '=2.1.2'
-add_gem 'rr', '=0.6.0'
+# For more information about each component, please read http://wiki.merbivore.com/faqs/merb_components
+dependency "merb-gen", merb_gems_version
+dependency "merb-action-args", merb_gems_version
+dependency "merb-assets", merb_gems_version  
+dependency "merb-cache", merb_gems_version   
+dependency "merb-helpers", merb_gems_version 
+dependency "merb-haml", merb_gems_version 
+dependency "merb-mailer", merb_gems_version  
+dependency "merb-slices", merb_gems_version  
+dependency "merb-auth-core", merb_gems_version
+dependency "merb-auth-more", merb_gems_version
+dependency "merb-auth-slice-password", merb_gems_version
+dependency "merb-param-protection", merb_gems_version
+dependency "merb-exceptions", merb_gems_version
 
-add_dependency 'dm-core', '=0.9.7', :require => 'dm-core'
-add_dependency 'dm-validations', '=0.9.7', :require => 'dm-validations'
+dependency "merb-exceptions", merb_gems_version
 
-add_dependency 'extlib', '=0.9.8', :require => 'extlib'
-add_dependency 'merb-core', '=1.0.1', :require => 'merb-core'
-add_dependency 'merb-gen', '=1.0.1'
-add_dependency 'merb-auth-core', '=1.0.1', :require => 'merb-auth-core'
-add_dependency 'merb-auth-more', '=1.0.1', :require => 'merb-auth-more'
-add_dependency 'merb-auth-slice-password', '=1.0.1', :require => 'merb-auth-slice-password'
-add_dependency 'merb-slices', '=1.0.1', :require => 'merb-slices'
-add_dependency 'merb-param-protection', '=1.0.1', :require => 'merb-param-protection'
-add_dependency 'merb_datamapper', '=1.0.1'
+dependency 'do_sqlite3'
+dependency "dm-core", dm_gems_version         
+dependency "dm-validations", dm_gems_version  
+dependency 'merb_datamapper', dm_gems_version
 
-add_dependency 'nokogiri', '>=1.0.6'
-add_dependency 'webrat', '=0.3.2'
+dependency 'nokogiri', '>=1.0.6'
+dependency 'webrat', '=0.3.2'
+dependency 'rr'
+dependency 'rcov'
+dependency 'mongrel'
+dependency 'ruby-debug', '=0.10.3'
+
+dependency "ruby-openid", '=2.1.2', :require_as => 'openid'

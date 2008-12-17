@@ -18,3 +18,5 @@ src/*
 .hg/*
 .svn/*
 .gemrc
+gems/
+bin/

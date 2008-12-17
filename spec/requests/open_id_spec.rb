@@ -56,13 +56,13 @@ describe OpenId do
   describe "#register" do
     describe "a user with no session data" do
       before(:each) do
-        @response = request(url(:signup), :method => 'GET')
+        @response = request(url(:signup))
       end
       it "should return http redirect" do
         @response.status.should == 302
       end
       it "should redirect to the login screen" do
-        @response.body.to_s.should match(%r!href="/login"!)
+        @response.should have_selector('a[href="/openid/login"]')
       end
     end
     describe "valid user data returned" do
@@ -95,7 +95,7 @@ describe OpenId do
         @response.status.should == 302
       end
       it "should redirect to the login page" do
-        @response.body.should have_xpath("//a[@href='/login']")
+        @response.body.should have_xpath("//a[@href='/openid/login']")
       end
       it "should give the user a message about validation errors"
     end
